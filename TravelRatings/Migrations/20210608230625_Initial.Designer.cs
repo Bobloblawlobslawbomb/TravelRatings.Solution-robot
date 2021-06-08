@@ -9,8 +9,8 @@ using TravelRatings.Models;
 namespace TravelRatings.Migrations
 {
     [DbContext(typeof(TravelRatingsContext))]
-    [Migration("20210608222426_zombies")]
-    partial class zombies
+    [Migration("20210608230625_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
