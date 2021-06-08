@@ -19,7 +19,7 @@ namespace TravelRatings.Controllers
 
     //GET api/destinations
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<Destination>>> Get(string country, string city, decimal averagerating)
+    public async Task<ActionResult<IEnumerable<Destination>>> Get(string country, string city /*decimal averageRating*/)
     {
       var query = _db.Destinations.AsQueryable();
       if (country != null)
@@ -32,10 +32,10 @@ namespace TravelRatings.Controllers
         query = query.Where(entry => entry.City == city);
       }
 
-      if (averagerating != null)
-      {
-        query = query.Where(entry => entry.AverageRating == averagerating);
-      }
+      // if (averageRating != null)
+      // {
+      //   query = query.Where(entry => entry.AverageRating == averageRating);
+      // }
 
       return await query.ToListAsync();
     }
