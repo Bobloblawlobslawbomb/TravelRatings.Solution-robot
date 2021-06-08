@@ -4,11 +4,12 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using TravelRatings.Models;
 using System.Linq;
+using System;
 
 namespace TravelRatings.Controllers
 {
-  [Route("api/[controller]")]
   [ApiController]
+  [Route("api/[controller]")]
   public class DestinationsController : ControllerBase
   {
     private readonly TravelRatingsContext _db;
@@ -19,7 +20,7 @@ namespace TravelRatings.Controllers
 
     //GET api/destinations
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<Destination>>> Get(string country, string city /*decimal averageRating*/)
+    public async Task<ActionResult<IEnumerable<Destination>>> Get(string country, string city)
     {
       var query = _db.Destinations.AsQueryable();
       if (country != null)
@@ -32,13 +33,21 @@ namespace TravelRatings.Controllers
         query = query.Where(entry => entry.City == city);
       }
 
-      // if (averageRating != null)
-      // {
-      //   query = query.Where(entry => entry.AverageRating == averageRating);
-      // }
-
       return await query.ToListAsync();
     }
+
+    // [HttpGet]
+    // public async Task<IEnumerable<Destination>> Get()//made async
+    // {
+    //   var rng = new Random();
+    //   //int Dcount = new { id = destination.DestinationId }
+    //   int Dcount = await DestinationId;//new line
+    //   return Enumerable.Range(1, 5).Select(index => new Destination
+    //   {
+    //     RandomDestination = rng.Next(1, 55)
+    //   })
+    //   .ToArray();
+    // }
 
     //POST api/destinations
     [HttpPost]
