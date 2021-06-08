@@ -110,18 +110,33 @@ namespace TravelRatings
       }
 
       //from the documentation
+      // app.UseSwagger();
+      // app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "ASP.NET 5 Web API v1"));
+
+      // //app.UseHttpsRedirection();
+      // app.UseAuthentication();
+
+      // //end documentation
+
+      // //app.UseHttpsRedirection();
+
+      // app.UseRouting();
+
+      // app.UseAuthorization();
+
+      // app.UseEndpoints(endpoints =>
+      // {
+      //   endpoints.MapControllers();
+      // });
+
       app.UseSwagger();
       app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "ASP.NET 5 Web API v1"));
 
-      //app.UseHttpsRedirection();
-      app.UseAuthentication();
-
-      //end documentation
-
-      //app.UseHttpsRedirection();
+      app.UseHttpsRedirection();
 
       app.UseRouting();
 
+      app.UseAuthentication();
       app.UseAuthorization();
 
       app.UseEndpoints(endpoints =>
