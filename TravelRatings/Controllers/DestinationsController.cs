@@ -18,6 +18,13 @@ namespace TravelRatings.Controllers
     }
 
     //GET api/destinations
+    /// <summary>
+    /// Get every instance of  Destination
+    /// </summary>
+    /// <remarks>Lookup an input EAN barcode and return key details about the product</remarks>
+    /// <param name="country" example="United States">Counnnntryyyy</param>
+    /// <param name="city" example="Atlanta">CIITTTYYYYYY</param>
+    /// <returns>JSON describing matching product data to the entered barcode</returns>
     [HttpGet]
     public async Task<ActionResult<IEnumerable<Destination>>> Get(string country, string city /*decimal averageRating*/)
     {
@@ -39,6 +46,10 @@ namespace TravelRatings.Controllers
 
       return await query.ToListAsync();
     }
+    /// <summary>
+    /// Update Destination information.
+    /// </summary>
+    /// <param name="Destinations.Country"></param>
 
     //POST api/destinations
     [HttpPost]

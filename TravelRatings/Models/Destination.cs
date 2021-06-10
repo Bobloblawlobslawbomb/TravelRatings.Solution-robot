@@ -7,6 +7,7 @@ namespace TravelRatings.Models
     public int DestinationId { get; set; }
     [Required]
     [StringLength(56)]
+    [Display(Name = "Country")]
     public string Country { get; set; }
     [Required]
     public string City { get; set; }
