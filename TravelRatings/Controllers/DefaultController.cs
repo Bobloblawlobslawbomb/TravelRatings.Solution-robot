@@ -7,11 +7,10 @@ using System.Linq;
 
 namespace TravelRatings.Controllers
 {
-  [Route("api/[controller]")]
+  [Route("api/v{version:apiVersion}/[controller]")]
   [ApiController]
   [ApiVersion("1.0")]
   [ApiVersion("1.1")]
-  [ApiVersion("2.0")]
   public class DefaultController : ControllerBase
   {
     string[] authors = new string[]
@@ -21,5 +20,18 @@ namespace TravelRatings.Controllers
     {
       return authors;
     }
+    [HttpGet("{id}")]
+    [MapToApiVersion("2.0")]
+    public string Get(int id)
+    {
+      if (id > authors.Length + 1)
+      {
+        return "YOOOO! this aint real.";
+      }
+      return authors[id];
+    }
   }
+
+
 }
+
